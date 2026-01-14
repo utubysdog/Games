@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>The Powder Toy</title>
+    <style>
+        body { 
+            margin: 0; 
+            background: #000;
+            overflow: hidden;
+        }
+        canvas { 
+            display: block;
+            width: 100vw !important;
+            height: 100vh !important;
+            image-rendering: pixelated;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script src="powder.js"></script>
+    <script>
+        var canvas = document.getElementById('canvas');
+        
+        // Block right click
+        canvas.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // Map Shift+Click to right click for delete
+        var shiftHeld = false;
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Shift') shiftHeld = true;
+        });
+        document.addEventListener('keyup', e => {
+            if (e.key === 'Shift') shiftHeld = false;
+        });
+        
+        canvas.addEventListener('mousedown', e => {
+            if (shiftHeld && e.button === 0) {
+                e.preventDefault();
+                var rightClick = new MouseEvent('mousedown', {
+                    button: 2,
+                    buttons: 2,
+                    clientX: e.clientX,
+                    clientY: e.clientY
+                });
+                canvas.dispatchEvent(rightClick);
+            }
+        });
+        
+        create_powder({
+            canvas: canvas,
+            print: console.log,
+            printErr: console.error
+        });
+    </script>
+</body>
+</html>

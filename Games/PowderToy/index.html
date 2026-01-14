@@ -22,11 +22,8 @@
     <script src="powder.js"></script>
     <script>
         var canvas = document.getElementById('canvas');
-        
-        // Block right click
         canvas.addEventListener('contextmenu', e => e.preventDefault());
         
-        // Map Shift+Click to right click for delete
         var shiftHeld = false;
         document.addEventListener('keydown', e => {
             if (e.key === 'Shift') shiftHeld = true;

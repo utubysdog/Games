@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarPlayer - Game Library</title>
+    <title>Little gamer</title>
     <style>
+        :root {
+    --primary-color: #d8d8d8
+}
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +16,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            background: black;
             min-height: 100vh;
             color: white;
         }
@@ -21,9 +24,8 @@
         /* Header */
         header {
             padding: 20px 40px;
-            background: rgba(0, 0, 0, 0.5);
+            background: black;
             backdrop-filter: blur(10px);
-            border-bottom: 2px solid rgba(0, 255, 255, 0.1);
             display: flex;
             align-items: center;
             gap: 20px;
@@ -42,7 +44,7 @@
 
         h1 {
             font-size: 2em;
-            background: linear-gradient(135deg, #00ffff, #0099ff);
+            background: linear-gradient(135deg, var(--primary-color), #bcbcbc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -64,7 +66,7 @@
             width: 100%;
             padding: 15px 20px;
             background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(0, 255, 255, 0.2);
+            border: 2px solid rgba(88, 88, 88, 0.2);
             border-radius: 10px;
             color: white;
             font-size: 16px;
@@ -73,7 +75,7 @@
 
         .search-bar input:focus {
             outline: none;
-            border-color: #00ffff;
+            border-color: #9a9a9a;
             background: rgba(255, 255, 255, 0.08);
         }
 
@@ -90,12 +92,12 @@
         }
 
         .game-card {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 153, 255, 0.05));
+            background: linear-gradient(135deg, rgba(252, 252, 252, 0.05), rgba(126, 126, 126, 0.05));
             border: 2px solid rgba(0, 255, 255, 0.1);
             border-radius: 15px;
             padding: 30px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s cubic-bezier(0.2, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             aspect-ratio: 1;
@@ -111,16 +113,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 153, 255, 0.1));
+            background: #1c1c1c4b;
             opacity: 0;
             transition: opacity 0.4s;
         }
 
         .game-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #00ffff;
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3),
-                        0 0 50px rgba(0, 255, 255, 0.2) inset;
+            transform: translateY(-5px) scale(1.02);
+            border-color: #dadada;
+            box-shadow: 0 20px 40px #a8a8a84d,
+                        0 0 50px rgba(72, 72, 72, 0.2) inset;
         }
 
         .game-card:hover::before {
@@ -137,7 +139,7 @@
 
         .game-card:hover h3 {
             transform: scale(1.1);
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            text-shadow: 0 0 20px rgba(149, 149, 149, 0.8);
         }
 
         /* Game player page */
@@ -185,15 +187,15 @@
 
         .player-title {
             font-size: 1.3em;
-            color: #00ffff;
+            color: #ffffff;
         }
 
         .btn {
             padding: 10px 20px;
-            background: linear-gradient(135deg, #00ffff, #0099ff);
+            background: linear-gradient(135deg, #d0d0d0, #c7c7c7);
             border: none;
             border-radius: 8px;
-            color: white;
+            color: black;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -201,7 +203,7 @@
 
         .btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+            box-shadow: 0 5px 20px #cecece;
         }
 
         .game-frame {
@@ -223,7 +225,7 @@
         .loading {
             text-align: center;
             padding: 40px;
-            color: #00ffff;
+            color: #c4c4c4;
         }
 
         @keyframes pulse {
@@ -242,10 +244,10 @@
     <div id="mainPage">
         <header>
             <img src="logo.png" 
-                 alt="StarPlayer Logo" 
+                 alt="Little gamer Logo" 
                  class="logo"
                  onclick="location.reload()">
-            <h1>StarPlayer</h1>
+            <h1>Little gamer</h1>
         </header>
 
         <div class="container">
@@ -266,7 +268,7 @@
     <div id="gamePage" class="game-player">
         <div class="player-header">
             <img src="logo.png" 
-                 alt="StarPlayer Logo" 
+                 alt="Little gamer logo" 
                  class="player-logo"
                  onclick="goHome()">
             <span class="player-title" id="gameTitle">Game Title</span>
@@ -283,7 +285,7 @@
         const games = [
             "2048 cupcake",
             "4th and goal",
-            "Hollow Knit",
+            "Hollow Knight",
             "PowderToy",
             "a dance of fire and ice",
             "a dark room",
@@ -535,9 +537,9 @@
             "wordle"
         ];
 
-        async function loadGames() {
-            displayGames();
-        }
+        // async function loadGames() {
+            // displayGames();
+        // }
 
         function displayGames() {
             const grid = document.getElementById('gamesGrid');
@@ -589,7 +591,7 @@
         }
 
         // Load games on page load
-        loadGames();
+        displayGames();
     </script>
 </body>
 </html>

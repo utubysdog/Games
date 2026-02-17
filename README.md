@@ -1,3 +1,3 @@
-This is a game website for anyone to play and help develop if you want
-If you do use this as your own public project please credit me!
-Thank you!
+Alex you suck, you should not steal peoples things. jk tho its all open sourced and no credit.
+How about you help me fix my one repo and not use the forked one.
+Anyways Fck you
